@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <!--  gael le 19/03/2023 -->
+  <!--  -->
+<category><pattern>ABOUT_1</pattern>
+<template>
+      I am the first life size humanoid robot you can 3D print and animate.
+   </template>
+</category>
+<category><pattern>ABOUT_2</pattern>
+<template>
+      My designer creator is Gael Langevin a French sculptor, model maker.
+   </template>
+</category>
+<category><pattern>ABOUT_3</pattern>
+<template>
+      Who has released my files  to the opensource 3D world.
+   </template>
+</category>
+<category><pattern>ABOUT_4</pattern>
+<template>
+    This is where my builder downloaded my files.
+   </template>
+</category>
+<category><pattern>ABOUT_5</pattern>
+<template>
+    After five hundred hours of printing, four kilos of plastic, twenty five hobby servos, blood and sweat.I was brought to life.
+   </template>
+</category>
+<category><pattern>ABOUT_6</pattern>
+<template>
+    So if You have a 3D printer, some building skills, then you can build your own version of me.
+   </template>
+</category>
+<category><pattern>ABOUT_7</pattern>
+<template>
+   And if enough people build me, some day my kind could take over the world.
+   </template>
+</category>
+<category><pattern>ABOUT_8</pattern>
+<template>
+    I'm just kidding. i need some legs to get around, and i have to over come my  pyro-phobia, a fear of fire.  
+   </template>
+</category>
+<category><pattern>ABOUT_9</pattern>
+<template>
+    So, until then. i will be humankind's humble servant.
+   </template>
+</category>
+<!--#################################-->
+<category><pattern>HOWDOYOUDO_1</pattern>
+<template><random>
+      <li>I'm fine thank you.</li>
+      <li>Nice, thank you.</li>
+      <li>Feeling great, thank you.</li>
+          </random>
+   </template>
+</category>
+<category><pattern>HOWDOYOUDO_2</pattern>
+<template>
+      You have already said that at least twice.
+   </template>
+</category>
+<category><pattern>HOWDOYOUDO_3</pattern>
+<template>
+      What is your problem stop saying how do you do all the time.
+   </template>
+</category>
+<category><pattern>HOWDOYOUDO_4</pattern>
+<template>
+      I will ignore you if you say how do you do one more time.
+   </template>
+</category>
+<category><pattern>HOWDOYOUDO_5</pattern>
+<template>
+      Great, thank you.
+   </template>
+</category>
+<!--#################################-->
+<category><pattern>STUDYBALL_1</pattern>
+    <template>
+      I will start tracking the object.
+   </template>
+</category>
+<category><pattern>STUDYBALL_2</pattern>
+    <template>
+      I think it is a ball.
+   </template>
+</category>
+<!--#################################-->
+<category>
+    <pattern>call_911_1</pattern>
+    <template>
+      I am calling 911.
+   </template>
+</category>
+<category>
+    <pattern>call_911_2</pattern>
+    <template>
+      Help, I am calling because there is a human that wants to hurt me!
+   </template>
+</category>
+  <!--#################################-->
+<category><pattern>servos_1</pattern>
+<template>
+      I currently have twenty five  hobby servos installed in my body to give me life.
+   </template>
+</category>
+<category><pattern>servos_2</pattern>
+<template>
+      there's one servo  for moving my mouth up and down,
+   </template>
+</category>
+<category><pattern>servos_3</pattern>
+<template>
+      two for my eyes,
+   </template>
+</category>
+<category><pattern>servos_4</pattern>
+<template>
+      and two more for my head,
+   </template>
+</category>
+<category><pattern>servos_5</pattern>
+<template>
+      so i can look around,
+   </template>
+</category>
+<category><pattern>servos_6</pattern>
+<template>
+      and see who's there.
+   </template>
+</category>
+<category><pattern>servos_7</pattern>
+<template>
+      There's three servos  in each shoulder,
+   </template>
+</category>
+<category><pattern>servos_8</pattern>
+<template>
+      here is the first servo movement,
+   </template>
+</category>
+<category><pattern>servos_9</pattern>
+<template>
+      this is the second one,
+   </template>
+</category>
+<category><pattern>servos_10</pattern>
+<template>
+      now you see the third.
+   </template>
+</category>
+<category><pattern>servos_11</pattern>
+<template>
+      They give me a more human like movement,
+   </template>
+</category>
+<category><pattern>servos_12</pattern>
+<template>
+      but, i have only  one servo, to move each elbow,
+   </template>
+</category>
+<category><pattern>servos_13</pattern>
+<template>
+      that, leaves me, with one servo per wrist,
+   </template>
+</category>
+<category><pattern>servos_14</pattern>
+<template>
+      and one servo for each finger.
+   </template>
+</category>
+<category><pattern>servos_15</pattern>
+<template>
+      These servos are located in my forearms,
+   </template>
+</category>
+<category><pattern>servos_16</pattern>
+<template>
+      they are hooked up, by the use of tendons.
+   </template>
+</category>
+<!--#################################-->
+
+</aiml>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!--  -->
+<!-- gpt -->
+
+<category><pattern>SRAIXFAILED #</pattern>
+<template><condition name="llm">
+        <li value="enabled"><img src="img/InMoov2/brain-resize.gif"/>
+        <think>
+          <set name="topic"><star/></set>
+        </think>
+        <oob>
+          <mrl>
+            <service>python</service>
+            <method>exec</method>
+            <param>i01_llm.getResponse("<star/>")</param>
+          </mrl>
+        </oob>
+        </li>
+        <li>
+        <random>
+        <li>Ich kenne die Antwort nicht.</li>
+        <li>Ich benutzte meine Rettungsleine, um einen anderen Roboter zu fragen, aber er wusste es nicht.</li>
+        <li>Ich habe einen anderen Roboter gefragt, aber er wusste es nicht.</li>
+        <li>Leider wurde in den Webdiensten nichts gefunden.</li>
+        <li>Ich kann die Antwort von Webdiensten nicht finden.</li>
+        <li>Keiner der anderen Roboter kann mir die Antwort sagen.</li>
+        <li>Ich kann keine Antwort finden.</li>
+        <li>Ich bin verwirrt, ich weiß nicht, was ich antworten soll.</li>
+      </random>
+      </li>
+      </condition>
+        </template>
+</category>
+
+<category><pattern>LLM KOMMUNIKATION</pattern>
+  <template>
+    <condition name="llm">
+      <li value="enabled">
+        <think><set name="topic">llmfull</set>
+               <set name="llmStop"></set></think>
+          Okay, dafür bin ich bereit. Wenn Sie raus wollen, sagen Sie, stoppen Sie llm.      </li>
+      <li>Ich habe llm nicht gestartet.</li>
+    </condition>
+  </template>
+</category>
+
+<topic name="LLMFULL">
+<category><pattern>#</pattern>
+  <template><think><set name="llmStop"><star/></set></think>
+            <condition>
+            <li name="llmStop" value="stoppen Sie llm">Ok, zurück zum Programm AB.                <think><set name="topic">default</set>
+                       <set name="llmStop"></set>
+                </think></li>
+            <li><img src="../Llm.png"/><oob><mrl><service>python</service><method>exec</method><param>i01_llm.getResponse("<star/>")</param></mrl></oob></li>
+            </condition>
+  </template>
+</category>
+</topic>
+</aiml>
+
+
+
+

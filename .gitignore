@@ -1,0 +1,10 @@
+# Large files
+myrobotlab-1.1.1610/libraries/jar/openni-deps-0.1.zip
+myrobotlab-1.1.1610/libraries/jar/tessdata-0.0.2.zip
+myrobotlab-1.1.1610/libraries/jar/yolov2-0.0.2.zip
+myrobotlab-1.1.1610/resource/OpenCV/yolo/yolov2.weights
+
+# Logs and OS files
+*.log
+.DS_Store
+myrobotlab-1.1.1610/.DS_Store

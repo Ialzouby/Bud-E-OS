@@ -1,0 +1,177 @@
+<div class="tab-header col-md-12" ng-init="tabHeaderActionsOpen = false">
+  <!-- Header row hidden: back + dropdown moved into robot FAB card -->
+  <table class="tab-header-table tab-header-table-hidden">
+    <tr>
+      <td valign="top">
+        <button class="btn btn-default" ng-click="mrl.goBack()" title="back">
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+      </td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <img ng-src="{{::service.simpleName}}.png" alt="" width="16" />
+            &nbsp;&nbsp {{::service.simpleName}}&nbsp;&nbsp;{{::service.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{::service.serviceVersion}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">service functions</li>
+            <li>
+              <a href="http://myrobotlab.org/service/{{::service.simpleName}}" target="_blank" ng-click="servicemenuDropdownOpen = false">
+                <i class="glyphicon glyphicon-question-sign"></i>
+                &nbsp;&nbsp;help
+              </a>
+            </li>
+            <li>
+              <a href="" ng-click="servicemenuDropdownOpen = false;msg.broadcastState()">
+                <i class="glyphicon glyphicon-refresh"></i>
+                &nbsp;&nbsp;refresh
+              </a>
+            </li>
+            <li>
+              <a href="" target="_blank" width="100%">
+                <i class="glyphicon glyphicon-equalizer"></i>
+                <span ng-show="!parentPanel.showPeerTable" ng-click="showPeers(true)">&nbsp;&nbsp;show peers</span>
+                <span ng-show="parentPanel.showPeerTable" ng-click="showPeers(false)">&nbsp;&nbsp;hide peers</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">json</li>
+            <li>
+              <a href="/api/service/{{::service.name}}" target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;properties
+              </a>
+            </li>
+            <li>
+              <a href="/api/service/{{::service.name}}/" target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;methods
+              </a>
+            </li>
+            <li>
+              <a href='/api/service/runtime/getNotifyEntries/"{{service.name}}"' target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;subscriptions
+              </a>
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <!-- Robot FAB: back, dropdown, Release/Save/Apply above settings gear, all pages -->
+  <div class="tab-header-fab-wrap">
+    <button type="button" class="tab-header-fab" ng-click="tabHeaderActionsOpen = !tabHeaderActionsOpen" title="Actions" aria-label="Actions">
+      <img class="tab-header-fab-img" src="../Intro/img/robot-actions.png" alt="Actions" />
+    </button>
+    <div class="tab-header-actions-card" ng-show="tabHeaderActionsOpen">
+      <div class="tab-header-actions-card-row">
+        <button class="btn btn-default tab-header-action-btn" ng-click="mrl.goBack(); tabHeaderActionsOpen = false" title="Back">
+          <span class="glyphicon glyphicon-arrow-left"></span> Back
+        </button>
+      </div>
+      <div class="tab-header-actions-card-row tab-header-card-dropdown-wrap">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle tab-header-action-btn tab-header-dropdown-btn" type="button" data-toggle="dropdown">
+            <img ng-src="{{::service.simpleName}}.png" alt="" width="16" />
+            {{::service.simpleName}} {{::service.name}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-header">service functions</li>
+            <li>
+              <a href="http://myrobotlab.org/service/{{::service.simpleName}}" target="_blank" ng-click="servicemenuDropdownOpen = false">
+                <i class="glyphicon glyphicon-question-sign"></i>
+                &nbsp;&nbsp;help
+              </a>
+            </li>
+            <li>
+              <a href="" ng-click="servicemenuDropdownOpen = false;msg.broadcastState()">
+                <i class="glyphicon glyphicon-refresh"></i>
+                &nbsp;&nbsp;refresh
+              </a>
+            </li>
+            <li>
+              <a href="" target="_blank" width="100%">
+                <i class="glyphicon glyphicon-equalizer"></i>
+                <span ng-show="!parentPanel.showPeerTable" ng-click="showPeers(true)">&nbsp;&nbsp;show peers</span>
+                <span ng-show="parentPanel.showPeerTable" ng-click="showPeers(false)">&nbsp;&nbsp;hide peers</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">json</li>
+            <li>
+              <a href="/api/service/{{::service.name}}" target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;properties
+              </a>
+            </li>
+            <li>
+              <a href="/api/service/{{::service.name}}/" target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;methods
+              </a>
+            </li>
+            <li>
+              <a href='/api/service/runtime/getNotifyEntries/"{{service.name}}"' target="_blank">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                &nbsp;&nbsp;subscriptions
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="btn btn-default tab-header-action-btn" ng-click="release(); tabHeaderActionsOpen = false" title="stops and releases a service">
+        <span class="glyphicon glyphicon-remove red"></span> Release
+      </button>
+      <button class="btn btn-default tab-header-action-btn" ng-click="save(); tabHeaderActionsOpen = false" title="save current configuration">
+        <span class="glyphicon glyphicon-save-file"></span> Save
+      </button>
+      <button class="btn btn-default tab-header-action-btn" ng-click="apply(); tabHeaderActionsOpen = false" title="load and apply configuration">
+        <span class="glyphicon glyphicon-open-file"></span> Apply
+      </button>
+    </div>
+  </div>
+  <div ng-show="parentPanel.showPeerTable">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">key</th>
+          <th scope="col">name</th>
+          <th scope="col">state</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in service.config.peers">
+          <td>
+            <span>
+              <a href="" ng-click="mrl.changeTab(peer.getActualName(service, key))">
+                <img width="32" ng-src="/{{value.type + '.png'}}" width="48" />
+              </a>
+              {{peer.getActualName(service, key)}}
+            </span>
+          </td>
+          <td>
+            {{value.key}}
+            <br />
+            {{value.type}}
+          </td>
+          <td>{{value.state}}</td>
+          <td>
+            <toggle
+              width="30"
+              height="28"
+              ng-model="service['is' + key[0].toUpperCase() + key.substring(1) + 'Started']"
+              ng-change="service['is' + key[0].toUpperCase() + key.substring(1) + 'Started']?startPeer(key):releasePeer(key)"
+              on=""
+              off=""
+            />
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

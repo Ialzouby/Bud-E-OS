@@ -1,0 +1,88 @@
+<!-- Floating settings: hidden checkbox toggles the card -->
+<input type="checkbox" id="mrl-settings-toggle" class="mrl-settings-toggle" />
+
+<!-- Floating action button - bottom right -->
+<label for="mrl-settings-toggle" class="mrl-settings-fab" title="MyRobotLab &amp; connection">
+    <span class="glyphicon glyphicon-cog"></span>
+</label>
+
+<!-- Floating card with everything from the old top bar -->
+<div class="mrl-settings-card">
+    <div class="mrl-settings-card-header">
+        <span class="nav-color">MyRobotLab</span>
+        <label for="mrl-settings-toggle" class="mrl-settings-close" title="Close"><span class="glyphicon glyphicon-remove"></span></label>
+    </div>
+    <div class="mrl-settings-card-body">
+        <div class="mrl-settings-row">
+            <span ng-if="state.connected" class="mrl-settings-status"><img src="../../connected.png" alt="" width="20"> Connected</span>
+            <span ng-if="!state.connected" class="mrl-settings-status"><img src="../../disconnected.png" alt="" width="20"> Disconnected</span>
+        </div>
+        <div class="mrl-settings-row nav-color">
+            {{mrl.getId()}} <i class="glyphicon glyphicon-resize-horizontal"></i> {{remotePlatform.id}} {{remotePlatform.mrlVersion}}
+        </div>
+        <div class="mrl-settings-row mrl-settings-actions">
+            <div class="btn-group" uib-dropdown>
+                <div uib-dropdown-toggle class="btn btn-default btn-sm"><i class="glyphicon glyphicon-option-vertical"></i> Menu</div>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li><a href="" ng-click="about()"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+                    <li><a href="" ng-click="help()"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+                    <li><a href="" ng-click="noWorky()"><i class="glyphicon glyphicon-alert"></i> No Worky !</a></li>
+                </ul>
+            </div>
+            <div uib-dropdown>
+                <span uib-dropdown-toggle class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-bell"></span>
+                    <span class="badge badge-danger notification-badge" style="background:red" ng-hide="errorCount == 0">{{errorCount}}</span>
+                    <span class="badge badge-danger notification-badge" style="background:#f0ad4e" ng-hide="warningCount == 0">{{warningCount}}</span>
+                    <span class="badge badge-danger notification-badge" style="background:#31708f" ng-hide="infoCount == 0">{{infoCount}}</span>
+                </span>
+                <ul id="notification-entries" class="dropdown-menu" uib-dropdown-menu>
+                    <li>
+                        <div class="alert alert-danger alert-dismissable mb-0" ng-hide="errorStatus == null">
+                            <span class="label label-danger">error</span>
+                            {{errorStatus.name}} : {{errorStatus.key}} : {{errorStatus.detail}}
+                            <span ng-hide="errorCount < 2" class="badge">{{errorCount}}</span>
+                            <button type="button" class="close" data-ng-click="errorStatus = null;errorCount = 0" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="alert alert-warning alert-dismissable mb-0" ng-hide="warningStatus == null">
+                            <span class="label label-warning">warning</span>
+                            {{warningStatus.name}} : {{warningStatus.key}} : {{warningStatus.detail}}
+                            <span ng-hide="warningCount < 2" class="badge">{{warningCount}}</span>
+                            <button type="button" class="close" data-ng-click="warningStatus = null;warningCount = 0" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="alert alert-info alert-dismissable mb-0" ng-hide="infoStatus == null">
+                            <span class="label label-info">info</span>
+                            {{infoStatus.name}} : {{infoStatus.key}} : {{infoStatus.detail}}
+                            <span ng-hide="infoCount < 2" class="badge">{{infoCount}}</span>
+                            <button type="button" class="close" data-ng-click="infoStatus = null;infoCount = 0" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <span class="btn btn-default btn-sm glyphicon glyphicon-repeat" ng-click="shutdown('restart')" title="Restart"></span>
+            <span class="btn btn-default btn-sm glyphicon glyphicon-off" ng-click="shutdown('shutdown')" title="Shutdown"></span>
+        </div>
+    </div>
+</div>
+<div ng-repeat="panel in displayImages">
+    <div class="panel-heading absolute" drag-directive name="name-01">
+        <h3 class="panel-title">
+            <b>WHAT A DRAG</b>
+        </h3>
+        <img ng-src="panel.data"/>
+    </div>
+</div>
+<!--
+<div class="alert alert-info alert-dismissable mb-0" ng-hide="infoStatus == null" align="center">
+    <span class="label label-info">info</span>
+    {{infoStatus.name}} : {{infoStatus.key}} : {{infoStatus.detail}}  
+            <span ng-hide="infoCount < 2" class="badge">{{infoCount}}</span>
+    <button type="button" class="close" data-ng-click="infoStatus = null;infoCount = 0" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+-->
+<!--
+<button ng-click="displayImage()">display image</button>
+
+-->

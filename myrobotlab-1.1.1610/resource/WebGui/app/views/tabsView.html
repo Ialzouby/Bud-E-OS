@@ -1,0 +1,429 @@
+<style>
+    #mySidenavContainer {
+        height: 44px;
+        width: 100%;
+        max-width: 100%;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(45, 45, 45, 0.98);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        padding: 0;
+        visibility: visible;
+        display: flex;
+        align-items: center;
+    }
+
+    #sidenavTop {
+        overflow: visible;
+        width: auto;
+        z-index: 110;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        background: transparent;
+        border: none;
+        flex-shrink: 0;
+        position: relative;
+        top: 0;
+    }
+
+    #sideNavSearch {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 180px;
+        height: 28px;
+        background: rgba(42, 42, 42, 0.5);
+        border: 1px solid rgba(74, 144, 226, 0.12);
+        border-radius: 6px;
+        color: #e0e0e0;
+        padding: 4px 10px;
+        transition: all 0.2s ease;
+        font-size: 11px;
+        margin-right: 12px;
+    }
+
+    #sideNavSearch:focus {
+        background: rgba(42, 42, 42, 0.8);
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        outline: none;
+        width: 220px;
+    }
+
+    #handleClose {
+        display: none;
+    }
+
+    .sidenav {
+        height: 44px;
+        width: auto;
+        max-width: calc(100% - 220px);
+        position: relative;
+        z-index: 100;
+        left: 0;
+        background: transparent;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        border: none;
+        scrollbar-width: thin;
+        padding: 0 12px 0 0;
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: rgba(26, 26, 26, 0.3);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgba(74, 144, 226, 0.4);
+        border-radius: 4px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(74, 144, 226, 0.6);
+    }
+
+    /* Horizontal scrollbar styling */
+    .sidenav::-webkit-scrollbar {
+        height: 3px;
+        width: 0;
+    }
+
+    .sidenav::-webkit-scrollbar-thumb {
+        background: rgba(74, 144, 226, 0.5);
+        border-radius: 2px;
+    }
+
+    .sidenav::-webkit-scrollbar-thumb:hover {
+        background: rgba(74, 144, 226, 0.7);
+    }
+
+    .sidenav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        /* font-size: 36px; */
+        margin-left: 50px;
+    }
+
+    .sidenav .pull-left {
+        width: auto !important;
+        text-align: left !important;
+    }
+
+    .sidenav .nav-tabs>li.active>a {
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.4), rgba(91, 192, 222, 0.4)) !important;
+        border: 1px solid rgba(74, 144, 226, 0.5) !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .sidenav .nav-tabs {
+        border: none;
+        padding: 0;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 4px;
+        height: 44px;
+        align-items: center;
+        margin: 0;
+    }
+
+    .sidenav .nav-tabs > li {
+        margin: 0;
+        display: inline-flex;
+        height: auto;
+    }
+
+    .sidenav .nav-tabs > li > a {
+        background: rgba(42, 42, 42, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        color: rgba(224, 224, 224, 0.7);
+        padding: 5px 12px;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        font-size: 11px;
+        height: 30px;
+        line-height: 1;
+        font-weight: 500;
+    }
+
+    #main {
+        position: inherit;
+        transition: none;
+        padding: 24px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 44px;
+        /* Firefox */
+        height: -moz-calc(100vh - 44px);
+        /* WebKit */
+        height: -webkit-calc(100vh - 44px);
+        /* Opera */
+        height: -o-calc(100vh - 44px);
+        /* Standard */
+        height: calc(100vh - 44px);
+        z-index: 1;
+        background: transparent;
+        overflow: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+    }
+        padding: 24px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 44px;
+        /* Firefox */
+        height: -moz-calc(100vh - 44px);
+        /* WebKit */
+        height: -webkit-calc(100vh - 44px);
+        /* Opera */
+        height: -o-calc(100vh - 44px);
+        /* Standard */
+        height: calc(100vh - 44px);
+        z-index: 1;
+        background: transparent;
+        overflow: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <!-- 1/2 manual tab implementation because Angular UI Bootstrap doesn't include a option for content right -->
+    <!-- migrate to Angular UI Bootstrap when they offer one -->
+    <!-- start mySidenavContainer -->
+    <div id="mySidenavContainer">
+        <!-- <div id="mySidenavContainer" onmouseleave="closeNav()"> -->
+        <div id="sidenavTop">
+            <!-- input type="text" class="form-control" ng-change="checkForWildCard(searchText)" ng-model="searchText.displayName" placeholder="Search" style="width:200px;" typeahead-min-length="0" -->
+            <input id="sideNavSearch" type="text" class="form-control" ng-model="searchText.displayName" placeholder="Search" typeahead-min-length="0">
+            <!--
+            <div id="handleClose">
+                <a href="javascript:void(0)" class="closebtn" style="font-size:30px;cursor:pointer" onclick="closeNav()">X</a>
+            </div>
+            -->
+            <div id="handleClose" onmouseenter="closeNav()" onclick="closeNav()">X</div>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <div class="row"/>
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-stacked col-md-1" role="tablist">
+                    <li ng-repeat="panel in panels | orderBy:getName:true | filter:searchText:wildCardOn" ng-class="{'active': view_tab == panel.name}">
+                        <a class="btn pull-left" ng-click="changeTab(panel.name)" href="">
+                            <img ng-src="{{::panel.simpleName}}.png" width="16">
+                            <b>{{::panel.displayName}}</b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end mySidenavContainer -->
+<!--
+    <span id="handleOpen" onmouseenter="openNav()" onclick="openNav()" class="glyphicon glyphicon-eject"></span>
+    -->
+<div id="handleOpen" onmouseenter="openNav()" onclick="openNav()">
+    <div class="menuName270">Services</div>
+</div>
+<!-- start main -->
+<div id="main">
+    <!-- span onmouseenter="openNav()" style="font-size:130px;cursor:pointer">&#9776;</span> -->
+    <!--   THIS IS THE MOST IMPORTANT PART OF /main
+                        could possibly use this as "undock" ?
+
+                <div ng-repeat="panel in panels"
+                     panel-drctv
+                     panel="panel">
+                </div>
+                -->
+    <div ng-repeat="panel in panels" service-ctrl-directive panel="panel">
+    <!-- maybe move this to somewhere general? -->
+    </div>
+    <div class="col-md-12">
+        <div class="tab-content">
+            <div ng-show="view_tab == panel.name" ng-repeat="panel in panels" service-body panel="panel"></div>
+        </div>
+    </div>
+</div>
+<!-- Removing begin.... -->
+<!-- end main -->
+<div id="ghostbarTouchHandler"></div>
+<!-- div id="handleOpenBottomMessages" onmouseenter="openBottomMessages()" onclick="openBottomMessages()"><span class="glyphicon glyphicon-menu-up mr-4 prevent-drag-select"></span> Show Notifications</div -->
+<div id="bottomMessages">
+    <!-- Debug :<div id="debugDrag"></div> -->
+    <div id="dragbar" ontouchstart="dragTouchBottomMessagesStart(event)" ontouchmove="dragTouchBottomMessagesMove(event)" ontouchend="dragTouchBottomMessagesEnd(event)" ontouchcancel="dragCancel(event)"></div>
+    <!-- <div id="ghostbarTouchZone"></div> -->
+    <div id="handleCloseBottomMessages" onmouseenter="closeBottomMessages()" onclick="closeBottomMessages()">
+        <span class="glyphicon glyphicon-menu-down mr-4 prevent-drag-select"></span>
+        Hide
+    
+    </div>
+</div>
+
+<script>
+    // FIXME - inline script using the dom directly - global methods - clever but not good :(
+    // first time
+    onStartOpenNav();
+    function onStartOpenNav() {
+        document.getElementById("handleClose").style.visibility = "hidden";
+        setTimeout(function() {
+            openNav();
+        }, 1);
+    }
+
+    function openNav() {
+        // Horizontal navbar is always open - no action needed
+        // Keep function for compatibility
+        return;
+    }
+
+    function closeNav() {
+        // Horizontal navbar is always open - no action needed
+        // Keep function for compatibility
+        return;
+    }
+
+    // Drag Bottom Messages container -------------------------------------
+    // initial height value;
+    var BottomMessagesHeight = 100;
+    var BottomMessagesTop = 100;
+    var i = 0;
+    var dragging = false;
+    $('#dragbar').mousedown(function(e) {
+        e.preventDefault();
+
+        dragging = true;
+        var main = $('#main');
+        var dragbar = $("#dragbar");
+        var ghostbar = $('<div>', {
+            id: 'ghostbar',
+            css: {
+                height: 4,
+                width: dragbar.outerWidth() - 10,
+                top: main.offset().top,
+                bottom: main.offset().bottom,
+                right: 20
+            }
+        }).appendTo('body');
+        $(document).mousemove(function(e) {
+            ghostbar.css("top", e.pageY);
+        });
+        //document.getElementById("debugDrag").innerHTML = BottomMessagesHeight;
+    });
+
+    $(document).mouseup(function(e) {
+        if (dragging) {
+            BottomMessagesTop = e.pageY - 2;
+            BottomMessagesHeight = document.body.clientHeight - e.pageY;
+            document.getElementById("main").style.height = "calc(100vh - (44px + " + BottomMessagesHeight + "px))";
+            $('#bottomMessages').css("top", BottomMessagesTop);
+            $('#bottomMessages').css("height", BottomMessagesHeight);
+            $('#ghostbar').remove();
+            $(document).unbind('mousemove');
+            document.getElementById("ghostbarTouchHandler").style.top = document.getElementById("bottomMessages").style.top;
+            dragging = false;
+        }
+    });
+
+    // drag functions for Touch devices 
+    document.getElementById("ghostbarTouchHandler").style.top = document.getElementById("bottomMessages").style.top;
+    function dragTouchBottomMessagesStart(event) {
+        //document.getElementById("ghostbarTouchHandler").style.visibility = "visible";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "1";
+        //document.getElementById("debugDrag").innerHTML = parseInt(event.touches[0].clientY);
+    }
+    function dragTouchBottomMessagesMove(event) {
+        event.preventDefault();
+        document.getElementById("ghostbarTouchHandler").style.top = parseInt(event.touches[0].clientY) + 10 + "px";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "1";
+        document.getElementById("ghostbarTouchHandler").style.zIndex = "2000";
+        BottomMessagesTop = parseInt(event.touches[0].clientY);
+        BottomMessagesHeight = parseInt(document.body.clientHeight - event.touches[0].clientY);
+    }
+
+    function dragTouchBottomMessagesEnd(event) {
+
+        document.getElementById("main").style.height = "calc(100vh - (52px + " + BottomMessagesHeight + "px))";
+        document.getElementById("bottomMessages").style.top = BottomMessagesTop + "px";
+        document.getElementById("bottomMessages").style.height = BottomMessagesHeight + "px";
+        document.getElementById("ghostbarTouchHandler").style.zIndex = "30";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "0";
+        //document.getElementById("debugDrag").innerHTML = BottomMessagesHeight;
+    }
+    function dragCancel(event) {
+        document.getElementById("ghostbarTouchHandler").style.zIndex = "30";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "0";
+    }
+    //-- End drag functions -----------------------
+
+    function openBottomMessages() {
+        document.getElementById("handleCloseBottomMessages").style.display = "block";
+        document.getElementById("handleOpenBottomMessages").style.display = "none";
+        document.getElementById("bottomMessages").style.visibility = "visible";
+        document.getElementById("notificationContainer").style.transform = "scaleY(1)";
+        document.getElementById("bottomMessages").style.top = document.body.clientHeight - BottomMessagesHeight + "px";
+        document.getElementById("bottomMessages").style.height = BottomMessagesHeight + "px";
+        document.getElementById("dragbar").style.visibility = "visible";
+        document.getElementById("main").style.height = "calc(100vh - (44px + " + BottomMessagesHeight + "px))";
+        document.getElementById("ghostbarTouchHandler").style.visibility = "visible";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "1";
+        document.getElementById("ghostbarTouchHandler").style.top = document.getElementById("bottomMessages").style.top;
+        document.getElementById("ghostbarTouchHandler").style.display = "block";
+    }
+
+    function closeBottomMessages() {
+        document.getElementById("handleCloseBottomMessages").style.display = "none";
+        document.getElementById("handleOpenBottomMessages").style.display = "block";
+        document.getElementById("notificationContainer").style.transform = "scaleY(0)";
+        document.getElementById("bottomMessages").style.visibility = "hidden";
+        document.getElementById("bottomMessages").style.height = "0px";
+        document.getElementById("dragbar").style.visibility = "hidden";
+        document.getElementById("main").style.height = "calc(100vh - 44px)";
+        document.getElementById("ghostbarTouchHandler").style.opacity = "0";
+        document.getElementById("ghostbarTouchHandler").style.top = document.getElementById("bottomMessages").style.top;
+        document.getElementById("ghostbarTouchHandler").style.display = "none";
+    }
+</script>
+<!--
+<input type="text" ng-model="name" />
+<button ng-click="changeTab(name)" >change tab</button>
+-->
